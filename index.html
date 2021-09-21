@@ -195,8 +195,6 @@
         let lydIndex = [];
         let buttonIndex = [];
 
-
-
         //view
         show();
 
@@ -206,7 +204,7 @@
 
             html += `
             Hva vil du si?
-            <input type="text" oninput="inputValue = this.value"/><button onclick='oversett()'>Oversett</button>  
+            <input type="text" oninput="inputValue = this.value" onchange="oversett()" placeholder="skriv her og trykk enter"/> 
             <br><div id="youSaid" class="${hidden}">Du sa:
             <br>"<b>${inputValue}</b>"</div>
             <br>Oversettelse:
@@ -216,14 +214,13 @@
 
             for (let i = 0; i < lydIndex.length; i++) {
                 html += `
-            <button onclick='play(${lydIndex[i]})'>${buttonIndex[i]}</button>
+            <button onclick='play("${lydIndex[i]}")'>${buttonIndex[i]}</button>
               `;
             }
 
+
             document.getElementById('app').innerHTML = html;
         };
-
-
 
         //controllerererereren
 
@@ -250,10 +247,10 @@
         }
 
         function play(lydfil) {
-            let audio = new Audio(lydfil);
-            audio.play();
-            console.log(lydfil);
 
+            let audio = new Audio(lydfil);   //  lydfil = A.mp3     'A.mp3'
+            audio.play();
+           
             show();
 
             // var audio = new Audio("folder_name/audio_file.mp3");
